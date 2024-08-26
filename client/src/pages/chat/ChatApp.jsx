@@ -2,10 +2,16 @@
 import React, { useState } from 'react';
 import ChatSidebar from './components/ChatSidebar';
 import ChatWindow from './components/ChatWindow';
+import { users } from '../../utils/data';
 
 const ChatApp = () => {
 
     const [isChatsTab, setIsChatsTab] = useState(true);
+    const [currentFriends, setCurrentFriends] = useState(users);
+    const [activeFriend, setActiveFriend] = useState(null);
+    const [loggedInUser, setLoggedInUser] = useState({ _id: "1", name: "Alice Johnson" });
+
+    console.log(activeFriend, 'friend');
 
     return (
         <center className="h-screen bg-gray-800 flex items-center justify-center">
@@ -15,9 +21,14 @@ const ChatApp = () => {
                 <ChatSidebar
                     isChatsTab={isChatsTab}
                     setIsChatsTab={setIsChatsTab}
+                    users={currentFriends}
+                    setActiveFriend={setActiveFriend}
                 />
 
-                <ChatWindow />
+                <ChatWindow
+                    activeFriend={activeFriend}
+                    loggedInUser={loggedInUser}
+                />
             </div>
 
         </center>

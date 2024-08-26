@@ -2,7 +2,7 @@ import React from 'react';
 import { cx } from '../../../hooks/helper';
 import UserList from '../partials/UserList';
 
-const ChatSidebar = ({ isChatsTab, setIsChatsTab }) => {
+const ChatSidebar = ({ isChatsTab, setIsChatsTab, users, setActiveFriend }) => {
     return (
         <div className='w-4/12 flex flex-col gap-y-4 p-4'>
             <h5>Chat App</h5>
@@ -28,7 +28,10 @@ const ChatSidebar = ({ isChatsTab, setIsChatsTab }) => {
                 </button>
             </div>
 
-            {isChatsTab && <UserList />}
+            {isChatsTab && <UserList
+                users={users}
+                setActiveFriend={setActiveFriend}
+            />}
             {!isChatsTab && <p className='text-gray-300'>No Rooms available</p>}
         </div>
     );
